@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="DELETE"
         android:id="@+id/bt_del"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignTop="@+id/bt_up"
         android:layout_alignParentStart="true" />
 
     <ListView
@@ -60,8 +60,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UPDATE"
-        android:id="@+id/button"
+        android:id="@+id/bt_up"
         android:layout_below="@+id/bt_rd"
         android:layout_toEndOf="@+id/bt_del" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:id="@+id/bt_reset"
+        android:layout_above="@+id/listView"
+        android:layout_toEndOf="@+id/bt_rd" />
 
 </RelativeLayout>

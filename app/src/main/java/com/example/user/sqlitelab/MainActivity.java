@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button mBtRead;
     Button mBtDel;
     Button mBtUpdate;
+    Button mBtReset;
 
     ListView mList;
     ArrayAdapter<String> baseAdapter;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mBtRead = (Button) findViewById(R.id.bt_rd);
         mBtDel = (Button) findViewById(R.id.bt_del);
         mBtUpdate = (Button) findViewById(R.id.bt_up);
+        mBtReset = (Button) findViewById(R.id.bt_reset);
         ListView mList = (ListView) findViewById(R.id.listView);
 
         //INSERT 버튼 데이터 저장하기
@@ -91,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
                 String update = mEtDel.getText().toString();
                 Integer index = new Integer(update);
                 updateData(index, name);
+            }
+        });
+
+        //RESET 버튼 현재 Table 지우고 다시 Table 생성
+        mBtReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeTable();
+                createTable();
             }
         });
 
@@ -152,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     // 모든 Data 읽기
     public void selectAll() {
-        String sql = "select * from " + tableName +";";
+        String sql = "select * from " + tableName + " order by id desc;";
         Cursor results = db.rawQuery(sql, null);
         results.moveToFirst();
 
@@ -166,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             results.moveToNext();
         }
         results.close();
+
     }
 
 }
